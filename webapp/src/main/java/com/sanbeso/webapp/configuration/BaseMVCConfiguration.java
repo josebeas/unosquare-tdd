@@ -9,16 +9,17 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.FixedLocaleResolver;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
- * Created by jose.beas on 9/14/2016.
+ * Spring context configuration for Sanbeso Web Application
+ *
+ * @author Jose Beas
+ * @version 1.0
  */
 @Configuration
 @ComponentScan(basePackages = "com.sanbeso.webapp")
@@ -87,5 +88,19 @@ public class BaseMVCConfiguration extends WebMvcConfigurerAdapter {
 
         return requestMappingHandlerAdapter;
     }
+
+    /**
+     * Sets interceptor for WebApp module.
+     *
+     * @param registry Interceptors registry
+     */
+   /* @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+        localeChangeInterceptor.setParamName("lang");
+        registry.addInterceptor(localeChangeInterceptor);
+        SecurityInterceptor security = new SecurityInterceptor();
+        registry.addInterceptor(security);
+    }*/
 
 }

@@ -10,14 +10,20 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring.version>4.3.2.RELEASE</spring.version>
+        <spring.version>4.0.3.RELEASE</spring.version>
+        <jackson.databind.version>2.2.3</jackson.databind.version>
+        <jackson.mapper.version>1.9.2</jackson.mapper.version>
+        <mockito.version>1.9.5</mockito.version>
+        <commons.logging.version>1.1.1</commons.logging.version>
+        <slf4j.api.version>1.7.5</slf4j.api.version>
+        <commons.lang3.version>3.3.2</commons.lang3.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
         <!-- Spring related -->
@@ -77,6 +83,21 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
+        <!-- Jackson related for databinding -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.2.3</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.2</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
         <!--Basic webapp related-->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -110,6 +131,31 @@
             <version>3.3.2</version>
             <type>jar</type>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons.logging.version}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.interceptor</groupId>
+            <artifactId>javax.interceptor-api</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <!--Mockito dependencies-->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Swagger service API documentation generator -->
+        <dependency>
+            <groupId>com.mangofactory</groupId>
+            <artifactId>swagger-springmvc</artifactId>
+            <version>0.6.5</version>
         </dependency>
     </dependencies>
 
