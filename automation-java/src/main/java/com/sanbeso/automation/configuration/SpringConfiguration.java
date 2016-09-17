@@ -6,10 +6,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by user on 10/09/16.
+ * Stub basic Spring context configuration
  */
 @Configuration
-@ComponentScan({"com.sanbeso"})
+@ComponentScan({"com.sanbeso.webapp"})
 @EnableAutoConfiguration
 public class SpringConfiguration {
 
