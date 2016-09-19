@@ -6,11 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
 /**
- * Created by user on 12/09/16.
+ * Abstract TestBase, sets class with all necessary stuff to run automated tests
+ *
+ * @author Jose Beas
  */
 @ContextConfiguration(classes = SpringConfiguration.class)
 public abstract class TestBase {
 
+    /**
+     * Web driver manager to load pages and interact with them
+     */
     @Autowired
     FireFoxDriverManagerImpl webDriver;
 

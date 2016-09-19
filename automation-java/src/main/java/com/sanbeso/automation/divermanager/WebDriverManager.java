@@ -11,7 +11,10 @@ import java.util.NoSuchElementException;
 
 
 /**
- * Created by user on 10/09/16.
+ * Abstract definition of WebDriverManager
+ *
+ * @author Jose Beas
+ * @version 1.0
  */
 public abstract class WebDriverManager {
 
