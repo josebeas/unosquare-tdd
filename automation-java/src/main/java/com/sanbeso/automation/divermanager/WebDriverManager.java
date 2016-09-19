@@ -57,7 +57,7 @@ public abstract class WebDriverManager {
     /**
      * Create a new browser window.
      */
-    public abstract void newBrowser();
+    public abstract void setUpBrowser();
 
     /**
      * Open the specified URL in the browser.
@@ -65,6 +65,9 @@ public abstract class WebDriverManager {
      * @param url  URL to open
      */
     public void url(String url) {
+        if(this.Driver == null){
+            setUpBrowser();
+        }
         try {
             this.Driver.get(url);
         } catch (Exception exp) {
@@ -118,7 +121,10 @@ public abstract class WebDriverManager {
      *
      * @return {@link WebDriver}
      */
-    public WebDriver getDriver() {
+    private WebDriver getDriver() {
+        if(Driver == null){
+            setUpBrowser();
+        }
         return this.Driver;
     }
 
@@ -135,7 +141,7 @@ public abstract class WebDriverManager {
 
         do {
             try {
-                return this.Driver.findElement(by);
+                return this.getDriver().findElement(by);
             } catch (Exception exp) {}
         } while (System.currentTimeMillis() < end);
 
@@ -156,7 +162,7 @@ public abstract class WebDriverManager {
 
         do {
             try {
-                return this.Driver.findElements(by);
+                return getDriver().findElements(by);
             } catch (Exception exp) {
 
             }
@@ -182,7 +188,26 @@ public abstract class WebDriverManager {
                 };
         WebDriverWait wait = new WebDriverWait(this.getDriver(), 30);
         wait.until(pageLoadCondition);
-        return this.Driver.findElement(webElement).isDisplayed();
+        return this.getDriver().findElement(webElement).isDisplayed();
     }
 
+    /**
+     * Returns current page title
+     *
+     * @return page title
+     */
+    public String getPageTitle() {
+        return this.getDriver().getTitle();
+    }
+
+    /**
+     * Types given string into specified web element
+     *
+     * @param searchInput web element to type in
+     * @param string message to type
+     */
+    public void type(By searchInput, String string) {
+        WebElement element = this.getDriver().findElement(searchInput);
+        element.sendKeys(string);
+    }
 }

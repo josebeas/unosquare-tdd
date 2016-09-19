@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
+
 
 /**
  * Demo Login Controller for Sanbeso Web Application
@@ -29,9 +31,10 @@ public class HomeController {
 
     private static final Log LOGGER = LogFactory.getLog(HomeController.class);
 
-
     @Autowired
     UserService userService;
+
+    Random randomGenerator;
 
     /**
      * Shows initial greeting from base web application.
