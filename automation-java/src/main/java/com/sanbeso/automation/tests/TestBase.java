@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
  * Abstract TestBase, sets class with all necessary stuff to run automated tests
  *
  * @author Jose Beas
+ * @version 1.0
  */
 @ContextConfiguration(classes = SpringConfiguration.class)
 public abstract class TestBase {
@@ -18,5 +19,7 @@ public abstract class TestBase {
      */
     @Autowired
     FireFoxDriverManagerImpl webDriver;
+
+
 
 }

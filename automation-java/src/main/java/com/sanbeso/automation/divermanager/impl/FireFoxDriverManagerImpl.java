@@ -3,12 +3,17 @@ package com.sanbeso.automation.divermanager.impl;
 import com.sanbeso.automation.divermanager.WebDriverManager;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by user on 11/09/16.
+ * Firefox Selenium WebDriver manager implementation
+ *
+ * @author Jose Beas
+ * @version 1.0
  */
 @Component
+@Qualifier("fireFoxDriverManager")
 public class FireFoxDriverManagerImpl extends WebDriverManager {
 
     /**
@@ -36,7 +41,7 @@ public class FireFoxDriverManagerImpl extends WebDriverManager {
             p.setPreference("browser.startup.page", 0);
             p.setPreference("browser.download.manager.alertOnEXEOpen", false);
             p.setPreference("browser.download.manager.focusWhenStarting", false);
-            p.setPreference("browser.download.useDownloadDir", true);
+            //p.setPreference("browser.download.useDownloadDir", true);
 
 
         FirefoxDriver fd = new FirefoxDriver(p);

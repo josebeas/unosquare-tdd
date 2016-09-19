@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -64,7 +66,7 @@ public abstract class WebDriverManager {
      */
     public void url(String url) {
         try {
-            this.Driver.navigate().to(url);
+            this.Driver.get(url);
         } catch (Exception exp) {
             exp.printStackTrace();
         }
@@ -161,6 +163,26 @@ public abstract class WebDriverManager {
         } while (System.currentTimeMillis() < end);
 
         throw new NoSuchElementException("Failed to find element by " + by);
+    }
+
+    /**
+     * Determines if specified web element is beign displayed con screen
+     *
+     * @param webElement to search for
+     * @return <code>true</code> if element is displayed
+     * @throws NoSuchElementException
+     */
+    public boolean isVisible(By webElement) throws NoSuchElementException {
+        //Set a wait for results to load
+        ExpectedCondition<Boolean> pageLoadCondition = new
+                ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        return driver.findElement(webElement).isDisplayed();
+                    }
+                };
+        WebDriverWait wait = new WebDriverWait(this.getDriver(), 30);
+        wait.until(pageLoadCondition);
+        return this.Driver.findElement(webElement).isDisplayed();
     }
 
 }

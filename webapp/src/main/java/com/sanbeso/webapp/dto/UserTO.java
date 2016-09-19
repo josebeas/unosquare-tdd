@@ -64,7 +64,17 @@ public class UserTO implements Serializable{
         return isPublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setPublic(boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+
+    @Override
+    public String toString(){
+        return "UserTO{"+
+                "userName:'"+this.userName + "'," +
+                "firstName:'"+this.firstName + "'," +
+                "lastName:'"+this.lastName + "'," +
+                "isPublic:'" + this.isPublic + "'" +
+                "}";
     }
 }

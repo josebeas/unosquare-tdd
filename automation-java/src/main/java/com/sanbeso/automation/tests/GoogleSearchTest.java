@@ -5,6 +5,7 @@ import com.sanbeso.automation.divermanager.impl.FireFoxDriverManagerImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -16,12 +17,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class GoogleSearchTest {
 
     @Autowired
-    FireFoxDriverManagerImpl webDriver;
+    @Qualifier("fireFoxDriverManager")
+    FireFoxDriverManagerImpl driverManager;
 
     @Test
     public void testMain(){
-        webDriver.newBrowser();
-        webDriver.url("http://www.google.com");
+        driverManager.newBrowser();
+        driverManager.getDriver().get("http://www.google.com");
 
     }
 

@@ -1,5 +1,6 @@
 package com.sanbeso.webapp.controller;
 
+import com.sanbeso.webapp.dto.UserTO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -11,7 +12,10 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
- * Created by jose.beas on 9/14/2016.
+ * Unit tests for Home Spring controller
+ *
+ * @author Jose Beas
+ * @version 1.0
  */
 public class HomeControllerTest {
 
@@ -32,6 +36,14 @@ public class HomeControllerTest {
         String expectedGreeting = "Hello World!";
         String actualGreeting = classUnderTest.show();
         assertEquals("App greeting is not the expected!", expectedGreeting, actualGreeting);
+    }
+
+    @Test
+    public void testLogin(){
+        UserTO emptyUser = new UserTO();
+        UserTO actualUser = classUnderTest.login(null, null);
+        assertEquals("Public user is not retrieved when null user and password", emptyUser.getFirstName(), actualUser.getFirstName());
+        assertEquals("Public user is not retrieved when null user and password", emptyUser.getLastName(), actualUser.getLastName());
     }
 
 }

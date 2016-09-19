@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * Stub basic Spring context configuration
  */
 @Configuration
-@ComponentScan({"com.sanbeso.webapp"})
+@ComponentScan({"com.sanbeso.automation"})
 @EnableAutoConfiguration
 public class SpringConfiguration {
 
