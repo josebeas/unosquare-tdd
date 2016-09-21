@@ -19,4 +19,11 @@ public interface UserService {
      */
     UserTO processLogin(String username, String password);
 
+    /**
+     * Clean session from specified username info and returns a public user
+     *
+     * @return public user to allow user still interact with public elements
+     * @throws Exception
+     */
+    UserTO processLogout(String username) throws Exception;
 }

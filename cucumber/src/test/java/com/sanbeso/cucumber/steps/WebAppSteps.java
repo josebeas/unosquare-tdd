@@ -3,6 +3,7 @@ package com.sanbeso.cucumber.steps;
 import com.sanbeso.webapp.dto.UserTO;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.springframework.web.client.RestTemplate;
 
 import static org.junit.Assert.assertEquals;
@@ -30,10 +31,26 @@ public class WebAppSteps {
         this.user = user;
     }
 
-    @Given("^user hits login endpoint with null user and null password$")
+    @Given("^a user already logged$")
+    public void setSignedUser() throws Throwable {
+        UserTO user = new UserTO();
+        user.setFirstName("firstName");
+        user.setLastName("lastName");
+        user.setUserName("username");
+        this.user = user;
+    }
+
+    @When("^user hits login endpoint with null user and null password$")
     public UserTO hitLoginEndpoint() throws Throwable {
         RestTemplate restTemplate = new RestTemplate();
         publicUser = restTemplate.getForObject("http://localhost:8080/webapp/login", UserTO.class);
+        return publicUser;
+    }
+
+    @When("^user hits login logout with null user and null password$")
+    public UserTO hitLogoutEndpoint() throws Throwable {
+        RestTemplate restTemplate = new RestTemplate();
+        publicUser = restTemplate.getForObject("http://localhost:8080/webapp/logout?username=username", UserTO.class);
         return publicUser;
     }
 

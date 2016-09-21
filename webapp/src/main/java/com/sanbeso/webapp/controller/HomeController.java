@@ -48,14 +48,15 @@ public class HomeController {
     }
 
     /**
+     * Look for user on database and validate input password if it match then return signed user
      *
-     * @param username
-     * @param password
-     * @return
+     * @param username username input to log in
+     * @param password password input
+     * @return signed user
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     @ApiOperation(value = "Provides a valid user")
-    @ApiModel(type = UserTO.class, collection = false)
+    @ApiModel(type = UserTO.class)
     public UserTO login(@RequestParam(required = false) String username,
                           @RequestParam(required = false) String password){
         if(StringUtils.isEmpty(username) || StringUtils.isEmpty(password)){
@@ -64,4 +65,22 @@ public class HomeController {
         }
         return userService.processLogin(username, password);
     }
+
+    /**
+     *
+     * @param username
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    @ApiOperation(value = "Provides a valid user")
+    @ApiModel(type = UserTO.class)
+    public UserTO logout(@RequestParam(required = false) String username) throws Exception {
+        if(StringUtils.isEmpty(username)){
+            LOGGER.info("returning a public login");
+            return new UserTO();
+        }
+        return userService.processLogout(username);
+    }
+
 }

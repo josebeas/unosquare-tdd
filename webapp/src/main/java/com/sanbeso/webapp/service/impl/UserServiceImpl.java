@@ -1,6 +1,7 @@
 package com.sanbeso.webapp.service.impl;
 
 import com.sanbeso.webapp.dto.UserTO;
+import com.sanbeso.webapp.exception.MethodNotImplemented;
 import com.sanbeso.webapp.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,5 +33,15 @@ public class UserServiceImpl implements UserService {
         user.setUserName(username);
         LOGGER.info("logged as " + user.getUserName());
         return user;
+    }
+
+    /**
+     *
+     * @param username
+     * @return
+     * @throws Exception
+     */
+    public UserTO processLogout(String username) throws Exception {
+        throw new MethodNotImplemented("processLogout");
     }
 }
