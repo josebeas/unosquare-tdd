@@ -1,5 +1,5 @@
 .idea/
 *.iml
-cucumber/target
-automatio-java/target
-webapp/target
+cucumber/target/
+automation-java/target/
+webapp/target/
