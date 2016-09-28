@@ -25,10 +25,16 @@ import static org.junit.Assert.assertTrue;
 @ContextConfiguration(classes = SpringConfiguration.class)
 public class GoogleSearchTest {
 
+    /**
+     * Web driver manager used to handle web driver instances
+     */
     @Autowired
     @Qualifier("chromeDriverManager")
     ChromeDriverManagerImpl driverManager;
 
+    /**
+     * Automated test for Google main search page
+     */
     @Test
     public void testMain(){
         driverManager.url("http://www.google.com");

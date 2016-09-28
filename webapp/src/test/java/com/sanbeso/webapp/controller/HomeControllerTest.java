@@ -44,6 +44,9 @@ public class HomeControllerTest {
         initMocks(this);
     }
 
+    /**
+     * Unit test for initial endpoint
+     */
     @Test
     public void testShow(){
         String expectedGreeting = "Hello World!";
@@ -51,14 +54,20 @@ public class HomeControllerTest {
         assertEquals("App greeting is not the expected!", expectedGreeting, actualGreeting);
     }
 
+    /**
+     * Unit test for login using public user
+     */
     @Test
-    public void testLogin(){
+    public void testLogin_public_user(){
         UserTO emptyUser = new UserTO();
         UserTO actualUser = classUnderTest.login(null, null);
         assertEquals("Public user is not retrieved when null user and password", emptyUser.getFirstName(), actualUser.getFirstName());
         assertEquals("Public user is not retrieved when null user and password", emptyUser.getLastName(), actualUser.getLastName());
     }
 
+    /**
+     * Unit test for login using a valid user
+     */
     @Test
     public void testLogin_valid_user(){
         UserTO expectedUser = new UserTO();

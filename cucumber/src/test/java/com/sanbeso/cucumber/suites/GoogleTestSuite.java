@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
  * @version 1.0
  */
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/com/sanbeso/cucumber/features/GoogleSearchWorkflow.feature",
+@CucumberOptions(features = {"src/test/java/com/sanbeso/cucumber/features/GoogleSearchWorkflow.feature"},
         glue = {"com.sanbeso.cucumber.steps"})
 public class GoogleTestSuite {
 

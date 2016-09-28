@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,10 +22,16 @@ public class GoogleSearchSteps {
     /**
      * Selenium WebDriver local instance
      */
-    WebDriver driver = new FirefoxDriver();
+    WebDriver driver;
+
+    public void setUpBrowser() {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\jose.beas\\.m2\\repository\\chromedriver\\chromedriver\\win32\\2.21\\chromedriver.exe");
+        driver = new ChromeDriver();
+    }
 
     @Given("^the user is on Google landing page$")
-    public void setup() throws Throwable {
+    public void user_open_Google() throws Throwable {
+        setUpBrowser();
         driver.get("http://www.google.com");
         driver.manage().window().maximize();
     }
